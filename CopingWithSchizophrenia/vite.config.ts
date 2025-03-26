@@ -1,4 +1,3 @@
-import { paraglideVitePlugin } from '@inlang/paraglide-js';
 import { svelteTesting } from '@testing-library/svelte/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
@@ -10,13 +9,7 @@ const dirname =
 
 // More info at: https://storybook.js.org/docs/writing-tests/test-addon
 export default defineConfig({
-	plugins: [
-		sveltekit(),
-		paraglideVitePlugin({
-			project: './project.inlang',
-			outdir: './src/lib/paraglide'
-		})
-	],
+	plugins: [sveltekit()],
 	test: {
 		workspace: [
 			{
