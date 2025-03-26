@@ -1,12 +1,6 @@
 {
 	"/": [
-		"src/routes/+layout.js",
-		"src/routes/+layout.js"
-	],
-	"/main": [
-		"src/routes/+layout.js"
-	],
-	"/main/[section]": [
-		"src/routes/+layout.js"
+		"src/routes/+layout.ts",
+		"src/routes/+layout.ts"
 	]
 }
