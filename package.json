@@ -19,7 +19,7 @@
 		"test:e2e": "playwright test"
 	},
 	"lint-staged": {
-		"**/*.{js,ts,svelte,json,css,md}": [
+		"**/*.{js,ts,svelte,json,css,md,mdx,html,yml}": [
 			"prettier --write"
 		]
 	},
