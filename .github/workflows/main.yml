@@ -1,0 +1,12 @@
+name: All the Settings for cws
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  prettier:
+    name: Check Prettier Formatting
+    uses: ./.github/workflows/prettier.yml

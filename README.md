@@ -4,6 +4,12 @@ This is a decision based game that builds coping mechanisms for people dealing w
 
 ---
 
+# Stats Workflows
+
+![Prettier](https://github.com/MindmorphApp/cws.git/actions/workflows/prettier.yml/badge.svg)
+
+---
+
 - [Getting Started](#getting-started)
   1. [Clone the Repository](#clone)
   2. [Install Dependencies](#installdep)
