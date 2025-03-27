@@ -3,10 +3,8 @@
 This is a decision based game that builds coping mechanisms for people dealing with schizophrenia
 
 ---
-
-# Stats Workflows
-
-![Prettier](https://github.com/MindmorphApp/cws.git/actions/workflows/main.yml/badge.svg)
+**Stats Workflows**  
+![Prettier](https://github.com/MindmorphApp/cws/actions/workflows/main.yml/badge.svg)
 
 ---
 
