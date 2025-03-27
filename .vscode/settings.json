@@ -1,0 +1,5 @@
+{
+	"svelte.plugin.svelte.format.config.printWidth": 100,
+	"prettier.printWidth": 5,
+	"prettier.htmlWhitespaceSensitivity": "css"
+}
