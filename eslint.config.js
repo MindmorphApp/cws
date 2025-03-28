@@ -14,7 +14,7 @@ const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
 export default ts.config(
 	includeIgnoreFile(gitignorePath),
 	{
-		ignores: ['README.md', 'src/app.html']
+		ignores: ['README.md', 'src/app.html', 'package-lock.json']
 	},
 	js.configs.recommended,
 	...ts.configs.recommended,
