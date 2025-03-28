@@ -1,4 +1,4 @@
-name: All the Settings for cws
+name: Lint Settings
 on:
   push:
     branches: [main]
