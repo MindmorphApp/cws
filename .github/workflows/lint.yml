@@ -2,8 +2,8 @@ on:
   workflow_call:
 
 jobs:
-  prettier:
-    name: Checking the format of the code
+  lint:
+    name: Checks the code
     runs-on: ubuntu-latest
 
     steps:
@@ -14,9 +14,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 'latest'
-
       - name: 📦 Install dependencies
         run: npm ci
 
-      - name: 👮‍♀️ Run Prettier check
-        run: npx prettier --check .
+      - name: 👮‍♀️ Run Lint
+        run: npm run lint

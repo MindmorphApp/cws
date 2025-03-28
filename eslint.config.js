@@ -6,11 +6,16 @@ import globals from 'globals';
 import { fileURLToPath } from 'node:url';
 import ts from 'typescript-eslint';
 import svelteConfig from './svelte.config.js';
+import markdown from 'eslint-plugin-markdown';
+import htmlPlugin from 'eslint-plugin-html';
 
-const gitignorePath = fileURLToPath(new URL('../.gitignore', import.meta.url));
+const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
 
 export default ts.config(
 	includeIgnoreFile(gitignorePath),
+	{
+		ignores: ['README.md', 'src/app.html']
+	},
 	js.configs.recommended,
 	...ts.configs.recommended,
 	...svelte.configs.recommended,
@@ -22,6 +27,7 @@ export default ts.config(
 		},
 		rules: { 'no-undef': 'off' }
 	},
+	// Svelte specific config
 	{
 		files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
 		ignores: ['eslint.config.js', 'svelte.config.js'],
@@ -32,6 +38,21 @@ export default ts.config(
 				parser: ts.parser,
 				svelteConfig
 			}
+		}
+	},
+	// Markdown specific config
+	{
+		files: ['**/*.md'],
+		plugins: {
+			markdown
+		},
+		processor: 'markdown/markdown'
+	},
+	// Html specific config
+	{
+		files: ['**/*.html'],
+		plugins: {
+			html: htmlPlugin
 		}
 	}
 );

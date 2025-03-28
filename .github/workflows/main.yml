@@ -1,5 +1,4 @@
 name: All the Settings for cws
-
 on:
   push:
     branches: [main]
@@ -7,6 +6,6 @@ on:
     branches: [main]
 
 jobs:
-  prettier:
-    name: Check Prettier Formatting
-    uses: ./.github/workflows/prettier.yml
+  lint:
+    name: Uses esLint and Prettier and checks the Code
+    uses: ./.github/workflows/lint.yml
