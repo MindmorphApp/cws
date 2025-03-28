@@ -3,7 +3,7 @@ on:
 
 jobs:
   lint:
-    name: Checks the code
+    name: EsLint and Prettier
     runs-on: ubuntu-latest
 
     steps:
