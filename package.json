@@ -13,13 +13,20 @@
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run && npm run test:e2e",
 		"format": "prettier --write .",
-		"lint": "eslint . --ext .js,.ts,.svelte && prettier --check .",
-		"lint:fix": "eslint . --ext .js,.ts,.svelte --fix && prettier --write .",
+		"lint": "eslint . --ext .js,.ts,.svelte && prettier --check . && stylelint \"**/*.{css,svelte}\"",
+		"lint:fix": "eslint . --ext .js,.ts,.svelte --fix && prettier --write . && stylelint \"**/*.{css,svelte}\" --fix",
 		"test:e2e": "playwright test"
 	},
 	"lint-staged": {
-		"**/*.{js,ts,svelte,json,md,mdx,html,css,yml}": [
+		"**/*.{js,ts,svelte}": [
 			"eslint --fix",
+			"prettier --write"
+		],
+		"**/*.{json,md,mdx,html,yml}": [
+			"prettier --write"
+		],
+		"**/*.{css,svelte}": [
+			"stylelint --fix",
 			"prettier --write"
 		]
 	},
@@ -46,8 +53,11 @@
 		"jsdom": "^26.0.0",
 		"lint-staged": "^15.5.0",
 		"playwright": "^1.51.1",
+		"postcss-html": "^1.8.0",
 		"prettier": "^3.5.3",
 		"prettier-plugin-svelte": "^3.3.3",
+		"stylelint": "^16.17.0",
+		"stylelint-config-standard": "^37.0.0",
 		"svelte": "^5.25.3",
 		"svelte-check": "^4.1.5",
 		"typescript": "^5.8.2",

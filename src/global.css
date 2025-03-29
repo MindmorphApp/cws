@@ -1,0 +1,17 @@
+/* Global Styles */
+
+/* Example */
+
+/* Global variables */
+:root {
+	--primary-green: darkgreen;
+	--secondary-green: limegreen;
+	--tertiary-green: lime;
+	--font-size: 16px;
+}
+
+/* Window or Body element */
+
+body {
+	background-color: rgb(40 36 36);
+}
