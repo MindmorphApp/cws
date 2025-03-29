@@ -1,19 +1,31 @@
 <script lang="ts">
 	import '../global.css';
+	import { locale, t } from '$lib/i18n';
+	import { get } from 'svelte/store';
+
+	function toggleLang() {
+		const current = get(locale);
+		locale.set(current === 'en' ? 'de' : 'en');
+	}
+
 	let { children } = $props();
 </script>
 
 <!-- Here we can add common UI, that will be used by different components-->
 
 <!-- Example -->
+
 <nav>
-	<a href="/">home</a>
+	<a href="/">{$t('navigate')}</a>
 </nav>
+
+<button onclick={toggleLang}>{$t('language')}</button>
 
 {@render children()}
 
 <style>
-	nav {
+	nav,
+	button {
 		position: fixed;
 		width: 150px;
 		height: 30px;
@@ -27,6 +39,11 @@
 		box-shadow: inset 0 0 5px 3px black;
 	}
 
+	button {
+		top: 25%;
+	}
+
+	button:hover,
 	nav:hover {
 		color: beige;
 		background-color: var(--secondary-green);
@@ -35,6 +52,7 @@
 			0 0 40px 3px limegreen;
 	}
 
+	button:active,
 	nav:active {
 		color: whitesmoke;
 		background-color: var(--tertiary-green);
