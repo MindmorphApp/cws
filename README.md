@@ -86,7 +86,7 @@ When committing code, `bash` may not be recognized by Windows systems, meaning t
 
 Under:  
 `Windows` search: `View advanced system settings` --> `Environment Variables` --> in the section of "System variables" choose `Path` then click on `Edit...` --> `New` add the Path of bash.exe. --> then `ok, ok, ok`.  
-(In general, if Git bash was installed using the default file path, then it should be either under: `C:\Program Files\Git\bin` or `C:\Program Files\Git\usr\bin` make you check the path in the file explorer and copy it.)
+(In general, if Git bash was installed using the default file path, then it should be either under: `C:\Program Files\Git\bin` or `C:\Program Files\Git\usr\bin` make sure to check the path in the file explorer and copy it.)
 
 ---
 
