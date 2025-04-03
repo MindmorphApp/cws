@@ -29,7 +29,7 @@
 		position: fixed;
 		width: 150px;
 		height: 30px;
-		top: 50%;
+		top: 75%;
 		left: 50%;
 		margin-top: -15px;
 		margin-left: -75px;
@@ -40,7 +40,7 @@
 	}
 
 	button {
-		top: 25%;
+		top: 65%;
 	}
 
 	button:hover,
