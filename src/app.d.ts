@@ -2,6 +2,7 @@
 // for information about these interfaces
 declare global {
 	namespace App {
+		// These are SvelteKit-specific
 		// interface Locals {}
 		// interface Error {}
 		// interface PageData {}

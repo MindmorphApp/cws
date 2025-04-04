@@ -1,0 +1,27 @@
+{
+	"title": "Voices are divine messages",
+	"part": {
+		"chapter": 1,
+		"section": 3,
+		"choice": 1
+	},
+	"image": {
+		"character": "/pictures/reading_normal.json",
+		"dialog": [],
+		"voices": [{ "text": "FAIL" }, { "text": "NO USE" }]
+	},
+	"sound": "/sound/01_03_01.mp3",
+	"text": "Whiskers believes, that God himself spoke to her. She is devastated to hear that she will fail the exam.",
+	"choices": [
+		{
+			"text": "Messages from God can't be interpreted in different ways.",
+			"resilience": -1,
+			"goTo": "/content/01_04_01.json"
+		},
+		{
+			"text": "Messages form God can have metaphorical meanings.",
+			"resilience": 1,
+			"goTo": "/content/01_04_02.json"
+		}
+	]
+}

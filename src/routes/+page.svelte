@@ -1,16 +1,15 @@
 <script lang="ts">
 	import '@lottiefiles/lottie-player';
+	import type { LottiePlayerElement } from '$lib/types';
+	import { content, handleChoice } from '$lib/gameStore';
 
-	interface LottiePlayerElement extends HTMLElement {
-		play(): void;
-		pause(): void;
+	async function makeChoice(path: string) {
+		await handleChoice(path);
 	}
 
+	// Lottie Functionality
 	let lottieEl: LottiePlayerElement | null = null;
 	let isPlaying: boolean = true;
-
-	let text: string = 'you wil fail';
-	let letters: string[] = text.split('');
 
 	function toggleLottie(): void {
 		if (!lottieEl) return;
@@ -30,43 +29,59 @@
 			toggleLottie();
 		}
 	}
+
+	// Snake Effect Functionality
+	let text: string = '';
+	let letters: string[] = [];
+
+	$: if ($content?.image?.voices?.[1]) {
+		text = $content.image.voices[1].text;
+		letters = text.split('');
+	}
 </script>
 
-<div class="snake-container">
-	<div class="snake-text">
-		{#each letters as letter, i (letter + i)}
-			{#if letter === ' '}
-				<span
-					class="snake-letter space"
-					style="
+{#if $content}
+	<div class="snake-container">
+		<div class="snake-text">
+			{#each letters as letter, i (letter + i)}
+				{#if letter === ' '}
+					<span
+						class="snake-letter space"
+						style="
 
---i: {i}">&nbsp;</span
-				>
-			{:else}
-				<span
-					class="snake-letter"
-					style="
+--i:{i}">&nbsp;</span
+					>
+				{:else}
+					<span
+						class="snake-letter"
+						style="
 
---i: {i}">{letter}</span
-				>
-			{/if}
-		{/each}
+--i:{i}">{letter}</span
+					>
+				{/if}
+			{/each}
+		</div>
 	</div>
-</div>
+	<lottie-player
+		bind:this={lottieEl}
+		src={$content.image.character}
+		autoplay
+		loop
+		renderer="svg"
+		background="transparent"
+		tabindex="0"
+		role="button"
+		aria-label="Toggle animation"
+		onclick={toggleLottie}
+		onkeydown={handleKey}
+	></lottie-player>
 
-<lottie-player
-	bind:this={lottieEl}
-	src="/pictures/Reading_Normal.json"
-	autoplay
-	loop
-	renderer="svg"
-	background="transparent"
-	tabindex="0"
-	role="button"
-	aria-label="Toggle animation"
-	onclick={toggleLottie}
-	onkeydown={handleKey}
-></lottie-player>
+	{#each $content.choices as choice, index (index)}
+		<button onclick={() => makeChoice(choice.goTo)}>{choice.text}</button>
+	{/each}
+{:else}
+	<p>Loading...</p>
+{/if}
 
 <style>
 	.snake-container {
