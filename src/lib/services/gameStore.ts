@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { fetchContent } from '$lib/fetchContent';
+import { fetchContent } from '$lib/services/fetchContent';
 import type { GameContent } from '$lib/types';
 
 export const content = writable<GameContent | null>(null);

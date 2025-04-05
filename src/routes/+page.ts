@@ -1,5 +1,9 @@
 import type { PageLoad } from './$types';
-import { loadBeginningContent, content, currentPath } from '$lib/gameStore';
+import {
+	loadBeginningContent,
+	content,
+	currentPath
+} from '$lib/services/gameStore';
 import { get } from 'svelte/store';
 
 export const load: PageLoad = async ({ fetch }) => {

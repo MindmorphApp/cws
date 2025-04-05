@@ -5,10 +5,10 @@ export interface GameContent {
 		section: number;
 		choice: number;
 	};
-	image: {
+	scene: {
 		character: string;
-		dialog: { text: string }[];
-		voices: { text: string }[];
+		dialog: { text: string; position: string }[];
+		voices: { text: string; position: string }[];
 	};
 	sound: string;
 	text: string;
@@ -19,7 +19,7 @@ export interface GameContent {
 	}[];
 }
 
-export interface LottiePlayerElement extends HTMLElement {
+export interface LottieAsElement extends HTMLElement {
 	play(): void;
 	pause(): void;
 }

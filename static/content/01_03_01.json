@@ -5,10 +5,13 @@
 		"section": 3,
 		"choice": 1
 	},
-	"image": {
+	"scene": {
 		"character": "/pictures/reading_normal.json",
 		"dialog": [],
-		"voices": [{ "text": "FAIL" }, { "text": "NO USE" }]
+		"voices": [
+			{ "text": "FAIL", "position": "left" },
+			{ "text": "You Loser", "position": "right" }
+		]
 	},
 	"sound": "/sound/01_03_01.mp3",
 	"text": "Whiskers believes, that God himself spoke to her. She is devastated to hear that she will fail the exam.",
