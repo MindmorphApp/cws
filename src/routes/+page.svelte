@@ -9,7 +9,7 @@
 	}
 
 	// Card Functionality
-	let isPlaying = false;
+	let isPlaying = true;
 
 	function togglePlay() {
 		isPlaying = !isPlaying;
@@ -21,15 +21,17 @@
 	<Scene
 		src={$content.scene.character}
 		size="15rem"
-		autoplay={true}
+		autoplay={false}
 		playing={isPlaying}
 	/>
 	{#each $content.scene.voices as voice, index (index)}
 		<Voices
 			text={voice.text}
-			animation="snake"
+			animation={voice.animation}
 			position={voice.position}
 			size="2rem"
+			autoplay={true}
+			playing={isPlaying}
 		/>
 	{/each}
 	{#each $content.choices as choice, index (index)}

@@ -9,8 +9,8 @@
 		"character": "/pictures/reading_normal.json",
 		"dialog": [],
 		"voices": [
-			{ "text": "FAIL", "position": "left" },
-			{ "text": "You Loser", "position": "right" }
+			{ "text": "FAIL", "animation": "wave", "position": "left" },
+			{ "text": "You Loser", "animation": "wave", "position": "right" }
 		]
 	},
 	"sound": "/sound/01_03_01.mp3",

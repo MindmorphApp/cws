@@ -7,8 +7,12 @@ export interface GameContent {
 	};
 	scene: {
 		character: string;
-		dialog: { text: string; position: string }[];
-		voices: { text: string; position: string }[];
+		dialog: { text: string; position: 'left' | 'right' }[];
+		voices: {
+			text: string;
+			animation: 'wave' | 'curve';
+			position: 'left' | 'right';
+		}[];
 	};
 	sound: string;
 	text: string;
