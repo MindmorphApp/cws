@@ -24,6 +24,10 @@ export class Animator {
 		return this.t / this.time;
 	}
 
+	public set progress(progress: number) {
+		this.t = progress * this.time;
+	}
+
 	// Get static position at a given ratio
 	public getPositionAt(r: number): Position {
 		const amplitude = this.height / 20;

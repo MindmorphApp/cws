@@ -6,14 +6,17 @@
 		"choice": 1
 	},
 	"scene": {
-		"character": "/pictures/reading_normal.json",
+		"image": {
+			"character": "/pictures/reading_normal.json",
+			"background": ""
+		},
 		"dialog": [],
 		"voices": [
-			{ "text": "FAIL", "animation": "wave", "position": "left" },
-			{ "text": "You Loser", "animation": "wave", "position": "right" }
-		]
+			{ "text": "FAIL", "animation": "wave", "position": "right" },
+			{ "text": "You Loser", "animation": "wave", "position": "left" }
+		],
+		"sound": "/sound/01_03_01.mp3"
 	},
-	"sound": "/sound/01_03_01.mp3",
 	"text": "Whiskers believes, that God himself spoke to her. She is devastated to hear that she will fail the exam.",
 	"choices": [
 		{

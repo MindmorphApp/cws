@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Animator } from '$lib/services/animations/animator';
 	import { slitherMotion } from '$lib/services/animations/motions';
-	import { onDestroy } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 
 	interface Voices {
 		text: string;
@@ -10,21 +10,23 @@
 		size: string;
 		autoplay: boolean;
 		playing: boolean;
+		staticView: boolean;
 	}
 
-	let { text, animation, position, size, autoplay, playing }: Voices = $props();
+	let { text, animation, position, size, playing, staticView }: Voices =
+		$props();
 
 	let animator: Animator;
 	let letters: { char: string; x: number; y: number }[] = $state([]);
-	let reverse = true;
-	let width = $state(0);
-	let height = $state(0);
+	let reverse: boolean = $state(true);
+	let width: number = $state(0);
+	let height: number = $state(0);
+	let firstStart: boolean = $state(true);
+	let opacity = $state(0);
 
 	function updateLetters() {
 		letters = text.split('').map((char, i, arr) => {
-			if (position === 'left') {
-				reverse = true;
-			}
+			reverse = position === 'right';
 			const index = reverse ? arr.length - 1 - i : i;
 			const offset = index * 0.05;
 			const r = (animator.progress + offset) % 1;
@@ -33,27 +35,46 @@
 		});
 	}
 
-	$effect(() => {
+	onMount(() => {
 		const container = document.getElementById('container');
 		const rect = container!.getBoundingClientRect();
 		width = rect.width;
 		height = rect.height;
-		console.log(width, height);
+
 		if (animation === 'wave') {
 			animator = new Animator(width, height, slitherMotion, 10, 0.03);
 		}
+	});
 
-		if (autoplay || playing) {
-			animator.start(() => {
-				updateLetters();
-			});
+	$effect(() => {
+		if (!animator) return;
+
+		if (staticView) {
+			animator.progress = 0.5;
+			updateLetters();
+			opacity = 1;
+			firstStart = false;
+			return;
+		}
+
+		if (playing) {
+			if (firstStart) {
+				const randomDelay = Math.floor(Math.random() * Math.random() * 4000);
+				setTimeout(() => {
+					opacity = 1;
+					animator.start(() => {
+						updateLetters();
+					});
+					firstStart = false;
+				}, randomDelay);
+			} else {
+				animator.start(() => {
+					updateLetters();
+				});
+			}
 		} else {
-			// If static: only compute once
-			letters = text.split('').map((char, i) => {
-				const r = i / (text.length - 1 || 1);
-				const { x, y } = animator.getPositionAt(r);
-				return { char, x, y };
-			});
+			animator.stop();
+			updateLetters();
 		}
 	});
 
@@ -64,21 +85,39 @@
 
 <div
 	id="container"
-	style="position: relative; width: 50%; height: 100dvh; transform: scale(-1,1);"
+	style="
+		transform: {reverse ? 'scale(-1,1)' : 'scale(1,1)'};
+		opacity: {opacity};
+		transition: opacity 1s ease;
+	"
 >
 	{#each letters as { char, x, y }, i (i)}
 		<span
-			style="transform: translate({x}px, {y}px) scale(-1, 1); font-size: {size};"
+			style="
+				transform: translate({x}px, {y}px)
+				{reverse ? 'scale(-1,1)' : 'scale(1,1)'};
+				font-size: {size};
+				transition: transform 0.01s linear;
+			"
 		>
-			{char}</span
-		>
+			{char}
+		</span>
 	{/each}
 </div>
 
 <style>
+	#container {
+		width: 100%;
+		height: 100%;
+		position: relative;
+		overflow: hidden;
+		mask-image: linear-gradient(to right, black 90%, transparent 100%);
+		mask-image: linear-gradient(to right, black 90%, transparent 100%);
+	}
+
 	span {
 		position: absolute;
-		transition: transform 0.01s linear;
 		white-space: pre;
+		font-family: 'Comic Sans MS', 'Comic Sans', cursive;
 	}
 </style>
