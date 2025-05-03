@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Image from './image.svelte';
 	import Voices from './voices.svelte';
+	import Audio from './audio.svelte';
 	import Play from '$lib/components/play.svelte';
 	import type { Scene } from '$lib/types';
 
@@ -19,6 +20,7 @@
 	}
 </script>
 
+<Audio src={scene.sound} playing={isPlaying} />
 <div class="{size} container">
 	{#if scene.image.background}
 		<div class="layer background">
