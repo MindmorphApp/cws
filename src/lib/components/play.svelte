@@ -43,7 +43,6 @@
 	}
 
 	img {
-		mix-blend-mode: multiply;
 		width: 25%;
 		height: auto;
 	}

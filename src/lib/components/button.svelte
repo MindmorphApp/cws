@@ -11,21 +11,22 @@
 
 <style>
 	button {
+		width: 100%;
 		font-family: 'Comic Sans MS', cursive;
 	}
 
 	.btn-small {
-		font-size: 12px;
+		font-size: var(--font-size-small);
 		padding: 5px 10px;
 	}
 
 	.btn-medium {
-		font-size: 16px;
+		font-size: var(--font-size);
 		padding: 10px 20px;
 	}
 
 	.btn-large {
-		font-size: 20px;
+		font-size: var(--font-size-big);
 		padding: 15px 30px;
 	}
 </style>

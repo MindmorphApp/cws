@@ -4,15 +4,27 @@
 
 /* Global variables */
 :root {
-	--primary-green: darkgreen;
-	--secondary-green: limegreen;
-	--tertiary-green: lime;
+	--primary-color: #96cadb;
+	--secondary-color: #c5dfe8;
+	--tertiary-color: #006ea9;
 	--font-size-big: 32px;
 	--font-size: 16px;
+	--font-size-small: 8px;
 }
 
 /* Window or Body element */
 
+* {
+	background-color: transparent;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	word-wrap: break-word;
+	-webkit-font-smoothing: antialiased;
+}
+
 body {
-	background-color: rgb(214 205 205);
+	background: linear-gradient(var(--primary-color), var(--secondary-color));
+	height: 100dvh;
+	width: 100dvw;
 }

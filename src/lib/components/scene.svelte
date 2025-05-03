@@ -6,12 +6,11 @@
 	import type { Scene } from '$lib/types';
 
 	interface Card {
-		size?: 'small' | 'medium' | 'large';
 		scene: Scene;
 		staticPlay: boolean;
 	}
 
-	let { size = 'medium', scene, staticPlay = true }: Card = $props();
+	let { scene, staticPlay = true }: Card = $props();
 
 	let isPlaying = $state(false);
 
@@ -21,7 +20,7 @@
 </script>
 
 <Audio src={scene.sound} playing={isPlaying} />
-<div class="{size} container">
+<div class="container">
 	{#if scene.image.background}
 		<div class="layer background">
 			<Image src={scene.image.background} size="100%" playing={isPlaying} />
@@ -34,7 +33,7 @@
 					text={voice.text}
 					animation={voice.animation}
 					position={voice.position}
-					size="1.2rem"
+					size="var(--font-size)"
 					playing={isPlaying}
 					staticView={false}
 				/>
@@ -53,6 +52,8 @@
 
 <style>
 	.container {
+		width: 100%;
+		height: 100%;
 		position: relative;
 	}
 
@@ -104,20 +105,5 @@
 		width: 100%;
 		height: 100%;
 		z-index: 4;
-	}
-
-	.small {
-		width: 250px;
-		height: 250px;
-	}
-
-	.medium {
-		width: 450px;
-		height: 450px;
-	}
-
-	.large {
-		width: 650px;
-		height: 650px;
 	}
 </style>
