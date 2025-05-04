@@ -4,12 +4,17 @@
 
 /* Global variables */
 :root {
-	--primary-color: #96cadb;
+	--primary-background: linear-gradient(#96cadb, #c5dfe8);
+	--secondary-background: white;
+	--primary-color: #006ea9;
 	--secondary-color: #c5dfe8;
-	--tertiary-color: #006ea9;
+	--tertiary-color: white;
 	--font-size-big: 32px;
 	--font-size: 16px;
 	--font-size-small: 8px;
+	--font-family-text: 'Arial', sans-serif;
+	--font-family-button: 'Anton SC', 'Arial', sans-serif;
+	--font-family-scene: 'Comic Sans MS', 'Comic Sans', sans-serif;
 }
 
 /* Window or Body element */
@@ -24,7 +29,7 @@
 }
 
 body {
-	background: linear-gradient(var(--primary-color), var(--secondary-color));
+	background: var(--primary-background);
 	height: 100dvh;
 	width: 100dvw;
 }

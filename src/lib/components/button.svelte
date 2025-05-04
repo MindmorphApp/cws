@@ -1,32 +1,24 @@
 <script lang="ts">
 	interface Button {
 		text: string;
-		size?: 'small' | 'medium' | 'large';
 		onClick?: () => Promise<void>;
 	}
-	let { text, size = 'medium', onClick = async () => {} }: Button = $props();
+	let { text, onClick = async () => {} }: Button = $props();
 </script>
 
-<button class="btn-{size}" onclick={onClick}>{text}</button>
+<button onclick={onClick}>{text}</button>
 
 <style>
 	button {
 		width: 100%;
-		font-family: 'Comic Sans MS', cursive;
-	}
-
-	.btn-small {
-		font-size: var(--font-size-small);
-		padding: 5px 10px;
-	}
-
-	.btn-medium {
+		background: var(--primary-color);
+		color: var(--tertiary-color);
+		font-weight: 900;
+		font-family: var(--font-family-button);
 		font-size: var(--font-size);
-		padding: 10px 20px;
-	}
-
-	.btn-large {
-		font-size: var(--font-size-big);
-		padding: 15px 30px;
+		padding: var(--font-size-small);
+		border: 2px solid var(--tertiary-color);
+		border-radius: var(--font-size);
+		box-shadow: 0 2px 2px 1px rgb(0 0 0 / 30%);
 	}
 </style>

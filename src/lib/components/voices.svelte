@@ -118,6 +118,6 @@
 	span {
 		position: absolute;
 		white-space: pre;
-		font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+		font-family: var(--font-family-scene);
 	}
 </style>

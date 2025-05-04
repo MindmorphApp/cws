@@ -2,6 +2,7 @@
 	import { content, handleChoice } from '$lib/services/gameStore';
 	import Button from '$lib/components/button.svelte';
 	import Scene from '$lib/components/scene.svelte';
+	import Text from '$lib/components/text.svelte';
 
 	async function makeChoice(path: string) {
 		await handleChoice(path);
@@ -11,28 +12,27 @@
 <div class="container">
 	<!--Header-->
 	<div class="header">
-		<span class="logo">
+		<div class="logo">
 			<img src="./pictures/site/logo.png" alt="Mindmorph logo" />
-		</span>
-		<span class="menu">
+		</div>
+		<div class="menu">
 			<button class="info">
 				<img src="/icons/info.svg" aria-hidden="true" alt="info button" />
 			</button>
-		</span>
+		</div>
 	</div>
 	<!--Body-->
 	{#if $content}
 		<div class="body">
-			<Scene scene={$content.scene} staticPlay={false} />
+			<div class="scene">
+				<Scene scene={$content.scene} staticPlay={false} />
+			</div>
+			<div class="text"><Text text={$content.text} /></div>
 		</div>
 		<!--Footer-->
 		<div class="footer">
 			{#each $content.choices as choice, index (index)}
-				<Button
-					text={choice.text}
-					size="medium"
-					onClick={() => makeChoice(choice.goTo)}
-				/>
+				<Button text={choice.text} onClick={() => makeChoice(choice.goTo)} />
 			{/each}
 		</div>
 	{:else}
@@ -46,10 +46,9 @@
 		width: 100%;
 		display: grid;
 		grid-template:
-			'header header header' 20%
-			'body body body' 40%
-			'footer footer footer' 40% /
-			15% 70% 15%;
+			'header' 10%
+			'body' 60%
+			'footer' 30%;
 	}
 
 	/* Header */
@@ -65,7 +64,7 @@
 
 	.logo,
 	.menu {
-		margin: var(--font-size);
+		margin: var(--font-size-small);
 		height: 100%;
 		width: auto;
 		display: flex;
@@ -73,7 +72,7 @@
 	}
 
 	.logo img {
-		max-width: 20rem;
+		max-width: 10rem;
 		width: 100%;
 		object-fit: contain;
 	}
@@ -86,6 +85,19 @@
 	/* Body */
 	.body {
 		grid-area: body;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.scene {
+		width: 100%;
+		flex: 7;
+	}
+
+	.text {
+		width: 100%;
+		flex: 3;
 	}
 
 	/* Footer */
