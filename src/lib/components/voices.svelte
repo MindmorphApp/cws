@@ -8,7 +8,6 @@
 		animation: 'wave' | 'curve';
 		position: 'left' | 'right';
 		size: string;
-		autoplay: boolean;
 		playing: boolean;
 		staticView: boolean;
 	}
