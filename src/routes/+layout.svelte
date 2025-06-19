@@ -13,13 +13,4 @@
 </script>
 
 <!-- Here we can add common UI, that will be used by different components-->
-
-<!-- Example -->
-<!--
-<nav>
-	<a href="/">{$t('navigate')}</a>
-</nav>
-
-<button onclick={toggleLang}>{$t('language')}</button>
--->
 {@render children()}
